@@ -3,17 +3,17 @@ const mongoose = require('mongoose');
 const tweetSchema = new mongoose.Schema({
     content: {
         type: String,
-        required: true
+        required: true,
+        max: [250, 'Tweet cannot be more than 250 words']
     },
-    userEmail: {
-        type: String,
-    },
-    comments: [
+
+    hashtags: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
+            ref: 'Hashtag'
         }
     ]
+    
 }, { timestamps: true });
 
 tweetSchema.virtual('contentWithEmal').get(function process() {
