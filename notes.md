@@ -4,3 +4,6 @@ Difference between relational schema and nosql schema is here u not require to f
 Schema is for blueprint.
 
 findByIdAndUpdate return old values for new values u need to pass one more argument { new: true } inside the function
+lean function
+limit function ,skip function for page initialisation.
+Virtual :- properties that u not setup but still u can access like id. 

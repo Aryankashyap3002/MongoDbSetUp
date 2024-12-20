@@ -14,7 +14,11 @@ const tweetSchema = new mongoose.Schema({
             ref: 'Comment'
         }
     ]
-}, { timestamps: true})
+}, { timestamps: true });
 
-const Tweet = mongoose.model('Tweet', tweetSchema)
+tweetSchema.virtual('contentWithEmal').get(function process() {
+    return `${this.content} \nCreated by: ${this.userEmail}`;
+});
+
+const Tweet = mongoose.model('Tweet', tweetSchema);
 module.exports = Tweet;
