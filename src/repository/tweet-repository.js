@@ -5,6 +5,7 @@ class TweetRepository extends CrudRepository {
     constructor() {
         super(Tweet);
     }
+    
     async create(data) {
         try {
             const tweet = await Tweet.create(data);
@@ -14,16 +15,16 @@ class TweetRepository extends CrudRepository {
         }
     }
 
-    async getWithComment (id) {
+    async getWithComments(id) {
         try {
-            const tweet = await Tweet.findById(id).populate({path: 'comment'}).lean();
+            const tweet = await Tweet.findById(id).populate({path: 'comments'}).lean();
             return tweet;
         } catch (error) {
             console.log(error);
         }
     }
 
-    async getAll (offset, limit) {
+    async getAll(offset, limit) {
         try {
             const tweet = await Tweet.find().skip(offset).limit(limit);
             return tweet;
@@ -32,8 +33,14 @@ class TweetRepository extends CrudRepository {
         }
     }
 
+    async find(id) {
+        try {
+            const tweet = await Tweet.findById(id).populate({path: 'likes'});
+            return tweet;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
-
-
 
 export default TweetRepository;

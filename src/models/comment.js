@@ -1,15 +1,14 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const commentSchema = new mongoose.Schema({
     content: {
         type: String,
-        required: true
+        required: true,
     },
     userEmail: {
-        type: String,
+        type: String
     },
-    
-}, { timestamps: true})
+}, {timestamps: true});
 
-const Comment = mongoose.model('Comment', commentSchema)
-export default Comment
+const Comment = mongoose.model('Comment', commentSchema);
+export default Comment;
