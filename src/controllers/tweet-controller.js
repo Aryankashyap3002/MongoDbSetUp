@@ -3,8 +3,10 @@ import TweetService from "../services/tweet-service.js";
 const tweetService = new TweetService();
 
 export const createTweet = async (req, res) => {
+    // console.log(req)
     try {
         const response = await tweetService.create(req.body);
+        console.log(response)
         return res.status(201).json({
             success: true,
             message: 'Successfully created a new tweet',
